@@ -8,5 +8,5 @@ abstract class Routes {
   static const setAmountPage = "/set_amount";
   static const chooseMethodPage = "/choose_method";
   static const cardDetailPage = "/card_detail_page";
-  static const locationPage = "/location_page";
+  static const onboardingPage = "/onboarding_page";
 }

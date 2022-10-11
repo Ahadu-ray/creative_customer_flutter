@@ -58,7 +58,8 @@ class CustomAppBar extends StatelessWidget {
                         : SizedBox(
                             width: 30,
                           ),
-                    CustomText(title, style: AppTheme.butText()),
+                    CustomText(title,
+                        style: AppTheme.butText().copyWith(fontSize: 16)),
                     onRightIcon != null
                         ? IconButton(
                             onPressed: onRightIcon,

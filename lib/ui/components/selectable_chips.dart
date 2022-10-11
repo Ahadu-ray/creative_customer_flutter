@@ -4,18 +4,18 @@ import 'package:creative_customer_flutter/shared/themes/app_theme.dart';
 import 'package:creative_customer_flutter/ui/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
-class AppBarChips extends StatefulWidget {
-  AppBarChips({Key? key, required this.tabs, required this.onChange})
-      : assert(tabs.length == 2),
+class SelectableChips extends StatefulWidget {
+  SelectableChips({Key? key, required this.tabs, required this.onChange})
+      : assert(tabs.length == 3),
         super(key: key);
   List<String> tabs;
   List<Function()?> onChange;
 
   @override
-  State<AppBarChips> createState() => _AppBarChipsState();
+  State<SelectableChips> createState() => _SelectableChipsState();
 }
 
-class _AppBarChipsState extends State<AppBarChips> {
+class _SelectableChipsState extends State<SelectableChips> {
   int selected = 0;
 
   @override
@@ -31,7 +31,7 @@ class _AppBarChipsState extends State<AppBarChips> {
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         InkWell(
           child: Container(
-            width: MediaQuery.of(context).size.width * 0.38,
+            width: MediaQuery.of(context).size.width * 0.28,
             decoration: selected == 0
                 ? BoxDecoration(
                     color: AppTheme.mainGreen,
@@ -44,6 +44,7 @@ class _AppBarChipsState extends State<AppBarChips> {
               textAlign: TextAlign.center,
               style: AppTheme.butText().copyWith(
                   color: selected != 0 ? AppTheme.black : null,
+                  fontSize: selected != 0 ? 12 : 11,
                   fontWeight:
                       selected != 0 ? FontWeight.normal : FontWeight.w600),
             ),
@@ -57,7 +58,7 @@ class _AppBarChipsState extends State<AppBarChips> {
         ),
         InkWell(
             child: Container(
-              width: MediaQuery.of(context).size.width * 0.38,
+              width: MediaQuery.of(context).size.width * 0.28,
               decoration: selected == 1
                   ? BoxDecoration(
                       color: AppTheme.mainGreen,
@@ -79,6 +80,31 @@ class _AppBarChipsState extends State<AppBarChips> {
                 selected = 1;
               });
               widget.onChange.isNotEmpty ? widget.onChange[1]!() : null;
+            }),
+        InkWell(
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.28,
+              decoration: selected == 2
+                  ? BoxDecoration(
+                      color: AppTheme.mainGreen,
+                      borderRadius: BorderRadius.circular(10),
+                    )
+                  : null,
+              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+              child: CustomText(
+                widget.tabs[1],
+                textAlign: TextAlign.center,
+                style: AppTheme.butText().copyWith(
+                    color: selected != 2 ? AppTheme.black : null,
+                    fontWeight:
+                        selected != 2 ? FontWeight.normal : FontWeight.w600),
+              ),
+            ),
+            onTap: () {
+              setState(() {
+                selected = 2;
+              });
+              widget.onChange.isNotEmpty ? widget.onChange[2]!() : null;
             }),
       ]),
     );

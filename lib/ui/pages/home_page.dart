@@ -1,4 +1,11 @@
 import 'package:creative_customer_flutter/shared/themes/app_theme.dart';
+import 'package:creative_customer_flutter/ui/components/custom_appbar.dart';
+import 'package:creative_customer_flutter/ui/components/screen_with_appbar.dart';
+import 'package:creative_customer_flutter/ui/components/selectable_chips.dart';
+import 'package:creative_customer_flutter/ui/screens/home/completed_screen.dart';
+import 'package:creative_customer_flutter/ui/screens/home/job_request_screen.dart';
+import 'package:creative_customer_flutter/ui/screens/home/schedule_screen.dart';
+import 'package:creative_customer_flutter/ui/widgets/custom_grad_button.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
@@ -17,61 +24,35 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          PageView(
-            controller: _controller,
-            physics: NeverScrollableScrollPhysics(),
-            children: [],
-          ),
-          Positioned(
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                  boxShadow: AppTheme.mainCardDecoration().boxShadow),
-              clipBehavior: Clip.hardEdge,
-              child: BottomNavigationBar(
-                type: BottomNavigationBarType.shifting,
-                unselectedItemColor: Colors.grey,
-                selectedItemColor: AppTheme.mainGreen,
-                selectedLabelStyle: AppTheme.selectedNavTitleStyle(),
-                unselectedLabelStyle: AppTheme.unselectedNavTitleStyle(),
-                showSelectedLabels: true,
-                showUnselectedLabels: true,
-                items: const [
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      IconlyLight.profile,
-                    ),
-                    activeIcon: Icon(IconlyBold.profile),
-                    label: 'Job claim',
-                  ),
-                  BottomNavigationBarItem(
-                      icon: Icon(
-                        IconlyLight.calendar,
-                      ),
-                      activeIcon: Icon(IconlyBold.calendar),
-                      label: 'Schedule'),
-                  BottomNavigationBarItem(
-                      icon: Icon(
-                        IconlyLight.time_square,
-                      ),
-                      activeIcon: Icon(IconlyBold.time_square),
-                      label: 'Availability Time'),
-                  BottomNavigationBarItem(
-                      icon: Icon(
-                        IconlyLight.wallet,
-                      ),
-                      activeIcon: Icon(IconlyBold.wallet),
-                      label: 'Wallet'),
-                ],
-                currentIndex: _currentIndex,
-                onTap: _changePage,
+      body: ScreenWithAppBar(
+        appBar: CustomAppBar(
+          title: "Appointments",
+          onRightIcon: () {},
+          extra: SelectableChips(
+              onChange: [], tabs: ["Job Requests", "Schedule", "Completed"]),
+        ),
+        withSpace: 0,
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            PageView(
+              controller: _controller,
+              physics: NeverScrollableScrollPhysics(),
+              children: [
+                JobRequestsScreen(),
+                ScheduleScreen(),
+                CompletedScreen()
+              ],
+            ),
+            Positioned(
+              child: Container(
+                decoration: AppTheme.homeBottomDecoration(),
+                padding: EdgeInsets.symmetric(vertical: 29, horizontal: 37),
+                child: GradientButton(title: "Book Appointment"),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:creative_customer_flutter/shared/routes/app_routes.dart';
 import 'package:creative_customer_flutter/ui/pages/auth/login_page.dart';
 import 'package:creative_customer_flutter/ui/pages/auth/signup_page.dart';
 import 'package:creative_customer_flutter/ui/pages/home_page.dart';
+import 'package:creative_customer_flutter/ui/pages/onboarding_page.dart';
 import 'package:creative_customer_flutter/ui/pages/wallet/card_detail_page.dart';
 import 'package:creative_customer_flutter/ui/pages/wallet/choose_method_page.dart';
 import 'package:creative_customer_flutter/ui/pages/wallet/set_amount_page.dart';
@@ -37,6 +38,10 @@ abstract class AppPages {
     GetPage(
       name: Routes.cardDetailPage,
       page: () => CardDetailPage(),
+    ),
+    GetPage(
+      name: Routes.onboardingPage,
+      page: () => OnBoardingPage(),
     ),
   ];
 }

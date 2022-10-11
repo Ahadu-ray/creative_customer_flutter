@@ -13,6 +13,7 @@ class AppTheme {
   static const Color grey6 = Color(0xFFEDF1F7);
   static const Color grey7 = Color(0xFF969696);
   static const Color grey8 = Color(0xFFD1D1D1);
+  static const Color grey9 = Color(0xFFECECEC);
   static const Color mainGreen = Color(0xFF9ED015);
   static const Color mainGreen2 = Color(0xFF618403);
   static const Color mainGreen3 = Color(0xFF7FA90C);
@@ -88,7 +89,7 @@ class AppTheme {
 
   static TextStyle butText() => GoogleFonts.montserrat(
         color: Colors.white,
-        fontSize: 16,
+        fontSize: 13,
         fontWeight: FontWeight.w500,
       );
 
@@ -156,6 +157,16 @@ class AppTheme {
         )
       ],
       borderRadius: BorderRadius.circular(32));
+  static BoxDecoration whiteButtonDecoration() => BoxDecoration(
+      color: Colors.white,
+      boxShadow: const [
+        BoxShadow(
+            color: Color.fromRGBO(24, 39, 75, 0.08),
+            offset: Offset(0, 8),
+            blurRadius: 16,
+            spreadRadius: -6)
+      ],
+      borderRadius: BorderRadius.circular(32));
 
   static BoxDecoration coloredButtonDecoration() => BoxDecoration(
       color: AppTheme.mainGreen, borderRadius: BorderRadius.circular(7));
@@ -190,16 +201,14 @@ class AppTheme {
       ],
       borderRadius: BorderRadius.circular(12));
 
-  static BoxDecoration availTimeCardDecoration() => BoxDecoration(
-      color: Colors.white,
-      boxShadow: const [
+  static BoxDecoration homeBottomDecoration() =>
+      BoxDecoration(color: Colors.white, boxShadow: [
         BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.05),
-            offset: Offset(0, 3),
-            blurRadius: 30,
-            spreadRadius: 0)
-      ],
-      borderRadius: BorderRadius.vertical(top: Radius.circular(20)));
+            color: Color.fromRGBO(0, 0, 0, 0.23),
+            offset: Offset(30, 12),
+            blurRadius: 20,
+            spreadRadius: 13)
+      ]);
 
   static BoxDecoration walletCardDecoration() => BoxDecoration(
       gradient: walletGrad(),

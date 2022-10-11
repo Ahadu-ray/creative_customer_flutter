@@ -1,6 +1,6 @@
 import 'package:creative_customer_flutter/shared/routes/app_routes.dart';
 import 'package:creative_customer_flutter/shared/themes/app_theme.dart';
-import 'package:creative_customer_flutter/ui/components/appbar_chips.dart';
+import 'package:creative_customer_flutter/ui/components/selectable_chips.dart';
 import 'package:creative_customer_flutter/ui/components/custom_appbar.dart';
 import 'package:creative_customer_flutter/ui/components/screen_with_appbar.dart';
 import 'package:creative_customer_flutter/ui/widgets/custom_field.dart';
@@ -31,7 +31,7 @@ class _SetAmountPageState extends State<SetAmountPage> {
           appBar: CustomAppBar(
             title: "Wallet",
             onRightIcon: () {},
-            extra: AppBarChips(
+            extra: SelectableChips(
               tabs: tabs,
               onChange: [
                 () {
